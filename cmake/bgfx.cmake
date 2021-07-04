@@ -42,6 +42,10 @@ endif()
 # Create the bgfx target
 add_library( bgfx ${BGFX_LIBRARY_TYPE} ${BGFX_SOURCES} )
 
+file( GLOB BRTSHADERC_SOURCES ${BGFX_DIR}/tools/brtshaderc/*.cpp ${BGFX_DIR}/tools/brtshaderc/*.h)
+
+add_library( brtshaderc ${BGFX_LIBRARY_TYPE} ${BRTSHADERC_SOURCES} ${BGFX_SOURCES})
+
 if(BGFX_CONFIG_RENDERER_WEBGPU)
     include(cmake/3rdparty/webgpu.cmake)
     target_compile_definitions( bgfx PRIVATE BGFX_CONFIG_RENDERER_WEBGPU=1)
